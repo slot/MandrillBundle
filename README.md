@@ -31,7 +31,7 @@ Add the bundle to your composer.json
 # composer.json
 {
  "require": {
-     "php": ">=5.3.3",
+     "hipaway-travel/mandrill-bundle": "dev-master",
  }
 }
 ```
