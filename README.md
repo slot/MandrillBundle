@@ -50,6 +50,7 @@ Add configuration to config.yml.
 Log in to Mandrill and go to "Settings" -> "SMTP and API Credentials". Create an API Key and use it in your Symfony2 Configuration.
 
 ```yaml
+# config.yml
 
 hip_mandrill:
     api_key: xxxxx
