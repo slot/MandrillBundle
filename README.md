@@ -36,11 +36,24 @@ Add the bundle to your composer.json
 }
 ```
 
-run composer install
+Run composer install
 
 ```sh
 php ./composer.phar install
 ```
+
+Enable the bundle in the kernel
+
+    <?php
+    // app/AppKernel.php
+
+    public function registerBundles()
+    {
+        $bundles = array(
+            // ...
+            new Hip\MandrillBundle\HipMandrillBundle(),
+        );
+    }
 
 Configuration
 -------------
@@ -54,7 +67,9 @@ Log in to Mandrill and go to "Settings" -> "SMTP and API Credentials". Create an
 
 hip_mandrill:
     api_key: xxxxx
-
+    default:
+        sender: info@example.com
+        sender_name: John Doe
 ```
 
 Now you're all set, send your first transactional mails:
