@@ -100,9 +100,10 @@ class ExampleController
         $message = new Message();
 
         $message
-            ->setFrom('mail@example.com')
+            ->setFromEmail('mail@example.com')
             ->setFromName('Customer Care')
             ->addTo('max.customer@email.com')
+            ->setSubject('Some Subject')
             ->setHtml('<html><body><h1>Some Content</h1></body></html>');
 
         $result = $dispatcher->send($message);
