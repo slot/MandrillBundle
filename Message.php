@@ -250,8 +250,11 @@ class Message
      */
     public function addGlobalMergeVar($name, $content)
     {
-        $this->globalMergeVars[] = array($name => $content);
-
+        $this->globalMergeVars[] = array(
+            'name' => $name,
+            'content' => $content,
+        );
+ 
         return $this;
     }
 
