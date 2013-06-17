@@ -10,7 +10,6 @@ use Hip\MandrillBundle\Message;
  */
 class MessageTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testToIsInitializedAsArray()
     {
         $message = new Message();
@@ -98,20 +97,4 @@ class MessageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($headers['X-Binford'], 'more power (9100)');
 
     }
-
-    public function testAddForbiddenHeader()
-    {
-        $message = new Message();
-
-        try {
-            $message->addHeader('Forbidden-Header', 'should fail');
-        } catch (\Exception $e) {
-            return;
-        }
-
-        $this->fail('No exception thrown when trying to set forbidden header');
-    }
-
-
-
 }

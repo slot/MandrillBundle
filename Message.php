@@ -230,10 +230,6 @@ class Message
      */
     public function addHeader($key, $value)
     {
-        if (!preg_match('/^X-.*|Reply-To/i', $key)) {
-            throw new \Exception('currently only Reply-To and X-* headers are allowed');
-        }
-
         $this->headers[$key] = $value;
 
         return $this;
