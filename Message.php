@@ -278,6 +278,30 @@ class Message
 
         return $this;
     }
+    
+    /**
+     * Add several per-recipient merge variables,
+     * which override global merge variables with the same name.
+     *
+     * @param string $recipient
+     * @param array  $data
+     *
+     * @return Message
+     */
+    public function addMergeVars($recipient, $data)
+    {
+        $vars = array();
+        foreach ( $data as $name => $content ) {
+            $vars[] = array('name' => $name, 'content' => $content);
+        }
+
+        $this->mergeVars[] = array(
+            'rcpt' => $recipient,
+            'vars' => $vars
+        );
+
+        return $this;
+    }
 
     /**
      * Add a string to tag the message with.
