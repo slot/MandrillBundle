@@ -526,6 +526,8 @@ class Message
     public function setTrackClicks($trackClicks)
     {
         $this->trackClicks = $trackClicks;
+
+        return $this;
     }
 
     /**
