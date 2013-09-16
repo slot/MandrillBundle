@@ -159,6 +159,14 @@ class Message
     protected $tags = array();
 
     /**
+     * the unique id of a subaccount for this message - must already
+     * exist or will fail with an error
+     * 
+     * @var string
+     */
+    protected $subaccount;
+
+    /**
      * an array of strings indicating for which any matching URLs
      * will automatically have Google Analytics parameters appended
      * to their query string automatically.
@@ -585,6 +593,21 @@ class Message
     }
 
     /**
+     * optional string for adding this message to a subaccount
+     * 
+     * If this isn't provided the message will not be added to a subacount
+     * 
+     * @param string $subaccount
+     * @return \Hip\MandrillBundle\Message
+     */
+    public function setSubaccount($subaccount)
+    {
+        $this->subaccount = $subaccount;
+
+        return $this;
+    }
+
+    /**
      * optional string indicating the value to set for the utm_campaign tracking parameter.
      *
      * If this isn't provided the email's from address will be used instead.
@@ -748,6 +771,14 @@ class Message
     public function getRecipientMetadata()
     {
         return $this->recipientMetadata;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSubaccount()
+    {
+        return $this->subaccount;
     }
 
     /**
