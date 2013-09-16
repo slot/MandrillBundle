@@ -49,6 +49,7 @@ class HipMandrillExtension extends Extension
         $container->setParameter('hip_mandrill.api_key', $config['api_key']);
         $container->setParameter('hip_mandrill.default.sender', $config['default']['sender']);
         $container->setParameter('hip_mandrill.default.sender_name', $config['default']['sender_name']);
+        $container->setParameter('hip_mandrill.default.subaccount', $config['default']['subaccount']);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
