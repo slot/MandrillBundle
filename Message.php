@@ -207,12 +207,13 @@ class Message
      *
      * @param string $email
      * @param string $name
+     * @param string $type
      *
      * @return Message
      */
-    public function addTo($email, $name = '')
+    public function addTo($email, $name = '', $type = 'to')
     {
-        $this->to[] = array('email' => $email, 'name' => $name);
+        $this->to[] = array('email' => $email, 'name' => $name, 'type' => $type);
 
         return $this;
     }

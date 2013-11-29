@@ -64,6 +64,24 @@ class MessageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($recipientArray[1]['name'], 'Foo Bar');
     }
 
+    public function testAddToWithTypes()
+    {
+        $message = new Message();
+        $message->addTo('to-test@example.com', 'Foo Bar');
+        $message->addTo('cc-test@example.com', 'Foo User', 'cc');
+        $message->addTo('bcc-test@example.com', 'Bar User', 'bcc');
+        $recipientArray = $message->getTo();
+
+        $this->assertTrue(is_array($recipientArray));
+        $this->assertEquals(count($recipientArray), 3);
+        $this->assertArrayHasKey('type', $recipientArray[0]);
+        $this->assertEquals($recipientArray[0]['type'], 'to');
+        $this->assertArrayHasKey('type', $recipientArray[1]);
+        $this->assertEquals($recipientArray[1]['type'], 'cc');
+        $this->assertArrayHasKey('type', $recipientArray[2]);
+        $this->assertEquals($recipientArray[2]['type'], 'bcc');
+    }
+
     public function testHeaderIsInitialized()
     {
         $message = new Message();
