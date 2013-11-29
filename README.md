@@ -70,6 +70,7 @@ hip_mandrill:
     default:
         sender: info@example.com
         sender_name: John Doe
+        subaccount: Project # Optionally define a subaccount to use
 ```
 
 Now you're all set, send your first transactional mails:
@@ -104,7 +105,8 @@ class ExampleController
             ->setFromName('Customer Care')
             ->addTo('max.customer@email.com')
             ->setSubject('Some Subject')
-            ->setHtml('<html><body><h1>Some Content</h1></body></html>');
+            ->setHtml('<html><body><h1>Some Content</h1></body></html>')
+            ->setSubaccount('Project');
 
         $result = $dispatcher->send($message);
 
