@@ -115,4 +115,13 @@ class MessageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($headers['X-Binford'], 'more power (9100)');
 
     }
+
+    public function testSetSubaccount()
+    {
+        $message = new Message();
+
+        $message->setSubaccount('Subaccount Name');
+
+        $this->assertEquals($message->getSubaccount(), 'Subaccount Name');
+    }
 }
