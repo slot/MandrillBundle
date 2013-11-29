@@ -17,13 +17,13 @@
         }
     ],
     "require": {
-        "symfony/http-foundation": ">=2.1,<2.4-dev",
-        "symfony/config": ">=2.1,<2.4-dev",
+        "symfony/http-foundation": ">=2.1,<2.5-dev",
+        "symfony/config": ">=2.1,<2.5-dev",
         "mandrill/mandrill": "1.*"
     },
     "autoload": {
         "psr-0": { "Hip\\MandrillBundle": "" }
     },
     "target-dir": "Hip/MandrillBundle",
-    "minimum-stability": "dev"
+    "minimum-stability": "alpha"
 }
