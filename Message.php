@@ -351,13 +351,20 @@ class Message
      * In addition, you can select up to 10 metadata fields to index and
      * make searchable using the Mandrill search api.
      *
-     * @param string $data
+     * @param string|array $data
      *
      * @return Message
      */
     public function addMetadata($data)
     {
-        $this->metadata[] = $data;
+        if (is_array($data)) {
+            foreach ($data as $k => $v) {
+                $this->metadata[$k] = $v;
+            }
+        }
+        else {
+            $this->metadata[] = $data;
+        }
 
         return $this;
     }
@@ -367,7 +374,7 @@ class Message
      * values specified in the metadata parameter.
      *
      * @param string $recipient
-     * @param string $data
+     * @param string|array $data
      *
      * @return Message
      */
@@ -375,12 +382,19 @@ class Message
     {
         foreach ($this->recipientMetadata as $idx => $rcptMetadata) {
             if (isset($rcptMetadata['rcpt']) && $rcptMetadata['rcpt'] == $recipient) {
-                $this->recipientMetadata[$idx]['values'][] = $data;
+                if (is_array($data)) {
+                    foreach ($data as $k => $v) {
+                        $this->recipientMetadata[$idx]['values'][$k] = $v;
+                    }
+                }
+                else {
+                    $this->recipientMetadata[$idx]['values'][] = $data;
+                }
                 return $this;
             }
         }
 
-        $this->recipientMetadata[] = array('rcpt' => $recipient, 'values' => array($data));
+        $this->recipientMetadata[] = array('rcpt' => $recipient, 'values' => is_array($data) ? $data : array($data));
 
         return $this;
     }
