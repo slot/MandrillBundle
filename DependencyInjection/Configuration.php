@@ -52,6 +52,7 @@ class Configuration implements ConfigurationInterface
                 ->children()
                     ->scalarNode('sender')->end()
                     ->scalarNode('sender_name')->end()
+                    ->scalarNode('subaccount')->defaultNull()->end()
                 ->end()
             ->end()
             ->scalarNode('api_key')->defaultNull()->end()

@@ -47,16 +47,24 @@ class Dispatcher
     protected $defaultSender;
 
     /**
+     * Default subaccount
+     * 
+     * @var string
+     */
+    protected $subaccount;
+
+    /**
      * Default Sender Name
      *
      * @var string
      */
     protected $defaultSenderName;
 
-    public function __construct($service, $defaultSender, $defaultSenderName) {
+    public function __construct($service, $defaultSender, $defaultSenderName, $subaccount) {
         $this->service = $service;
         $this->defaultSender = $defaultSender;
         $this->defaultSenderName = $defaultSenderName;
+        $this->subaccount = $subaccount;
     }
 
     /**
@@ -75,6 +83,10 @@ class Dispatcher
         if (strlen($message->getFromEmail()) == 0) {
             $message->setFromEmail($this->defaultSender);
             $message->setFromName($this->defaultSenderName);
+        }
+
+        if (strlen($message->getSubaccount()) == 0 && null !== $this->subaccount) {
+            $message->setSubaccount($this->subaccount);
         }
 
         if (!empty($templateName)) {
