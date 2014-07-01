@@ -209,6 +209,26 @@ class Message
      */
     protected $attachments = array();
 
+    /**
+     * a custom domain to use for tracking opens and clicks instead of mandrillapp.com
+     *
+     * @var string
+     */
+    protected $trackingDomain;
+
+    /**
+     * a custom domain to use for SPF/DKIM signing instead of mandrill (for "via" or "on behalf of" in email clients)
+     *
+     * @var string
+     */
+    protected $signingDomain;
+
+    /**
+     * a custom domain to use for the messages's return-path
+     *
+     * @var string
+     */
+    protected $returnPathDomain;
 
     /**
      * Add a recipient
@@ -650,6 +670,30 @@ class Message
         return $this;
     }
 
+    /**
+     * @param string $returnPathDomain
+     */
+    public function setReturnPathDomain($returnPathDomain)
+    {
+        $this->returnPathDomain = $returnPathDomain;
+    }
+
+    /**
+     * @param string $signingDomain
+     */
+    public function setSigningDomain($signingDomain)
+    {
+        $this->signingDomain = $signingDomain;
+    }
+
+    /**
+     * @param string $trackingDomain
+     */
+    public function setTrackingDomain($trackingDomain)
+    {
+        $this->trackingDomain = $trackingDomain;
+    }
+
     public function toArray()
     {
         $data = array();
@@ -850,5 +894,29 @@ class Message
     public function getUrlStripQs()
     {
         return $this->urlStripQs;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReturnPathDomain()
+    {
+        return $this->returnPathDomain;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSigningDomain()
+    {
+        return $this->signingDomain;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTrackingDomain()
+    {
+        return $this->trackingDomain;
     }
 }
