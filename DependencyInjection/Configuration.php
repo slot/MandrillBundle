@@ -45,7 +45,6 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('hip_mandrill');
 
-
         $rootNode
         ->children()
             ->arrayNode('default')
@@ -56,6 +55,7 @@ class Configuration implements ConfigurationInterface
                 ->end()
             ->end()
             ->scalarNode('api_key')->defaultNull()->end()
+            ->scalarNode('disable_delivery')->defaultFalse()->end()
         ->end();
 
         return $treeBuilder;

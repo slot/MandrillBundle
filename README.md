@@ -67,6 +67,7 @@ Log in to Mandrill and go to "Settings" -> "SMTP and API Credentials". Create an
 
 hip_mandrill:
     api_key: xxxxx
+    disable_delivery: true # useful for dev/test environment. Default value is 'false'
     default:
         sender: info@example.com
         sender_name: John Doe
