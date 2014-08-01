@@ -48,7 +48,7 @@ class Dispatcher
 
     /**
      * Default subaccount
-     * 
+     *
      * @var string
      */
     protected $subaccount;
@@ -60,11 +60,17 @@ class Dispatcher
      */
     protected $defaultSenderName;
 
-    public function __construct($service, $defaultSender, $defaultSenderName, $subaccount) {
+    /**
+     * @var bool
+     */
+    protected $disableDelivery;
+
+    public function __construct($service, $defaultSender, $defaultSenderName, $subaccount, $disableDelivery) {
         $this->service = $service;
         $this->defaultSender = $defaultSender;
         $this->defaultSenderName = $defaultSenderName;
         $this->subaccount = $subaccount;
+        $this->disableDelivery = $disableDelivery;
     }
 
     /**
@@ -75,10 +81,13 @@ class Dispatcher
      * @param array $templateContent
      * @param bool $async
      *
-     * @return array
+     * @return array|bool
      */
     public function send(Message $message, $templateName = '', $templateContent = array(), $async = false)
     {
+        if ($this->disableDelivery) {
+            return false;
+        }
 
         if (strlen($message->getFromEmail()) == 0) {
             $message->setFromEmail($this->defaultSender);
