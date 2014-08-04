@@ -80,10 +80,12 @@ class Dispatcher
      * @param string $templateName
      * @param array $templateContent
      * @param bool $async
+     * @param string $ipPool
+     * @param string $sendAt
      *
      * @return array|bool
      */
-    public function send(Message $message, $templateName = '', $templateContent = array(), $async = false)
+    public function send(Message $message, $templateName = '', $templateContent = array(), $async = false, $ipPool=null, $sendAt=null)
     {
         if ($this->disableDelivery) {
             return false;
@@ -99,11 +101,11 @@ class Dispatcher
         }
 
         if (!empty($templateName)) {
-            return $this->service->messages->sendTemplate($templateName, $templateContent, $message->toArray(), $async);
+            return $this->service->messages->sendTemplate($templateName, $templateContent, $message->toArray(), $async, $ipPool, $sendAt);
 
         }
 
-        return $this->service->messages->send($message->toArray(), $async);
+        return $this->service->messages->send($message->toArray(), $async, $ipPool, $sendAt);
 
     }
 
