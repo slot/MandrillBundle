@@ -17,8 +17,8 @@
         }
     ],
     "require": {
-        "symfony/http-foundation": ">=2.1,<2.6-dev",
-        "symfony/config": ">=2.1,<2.6-dev",
+        "symfony/http-foundation": ">=2.1,<2.7-dev",
+        "symfony/config": ">=2.1,<2.7-dev",
         "mandrill/mandrill": "1.*"
     },
     "autoload": {
