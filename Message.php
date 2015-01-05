@@ -210,6 +210,13 @@ class Message
     protected $attachments = array();
 
     /**
+    * an array of images embedded in the message
+    *
+    * @var array
+    */
+    protected $images = array();
+
+    /**
      * a custom domain to use for tracking opens and clicks instead of mandrillapp.com
      *
      * @var string
@@ -483,6 +490,65 @@ class Message
     }
 
     /**
+     * Add images embedded in the message
+     *
+     * @param string $type - the MIME type of the image - must start with "image/"
+     * @param string $name - the Content-ID of the embedded image - use <img src="cid:THIS_VALUE"> to reference the image in your HTML content
+     * @param string $data - base64 encoded image data
+     *
+     * @return Message
+     */
+    public function addImage($type, $name, $data)
+    {
+        $this->images[] = array(
+            'type' => $type,
+            'name' => $name,
+            'content' => $data
+        );
+
+        return $this;
+    }
+
+    /**
+     * @param string $path - path to local or remote image file
+     * @param string $type - the MIME type of the image - must start with "image/" (optional)
+     * @param string $name - the Content-ID of the embedded image - use <img src="cid:THIS_VALUE"> to reference the image in your HTML content (optional)
+     * 
+     * @throws \Exception
+     * @return Message
+     */
+    public function addImageFromPath($path, $type = '', $name = '')
+    {
+        if (!is_readable($path)) {
+            throw new \Exception('cannot read file ' . $path);
+        }
+
+        $data = file_get_contents($path);
+
+        $base64data = base64_encode($data);
+
+        if (empty($name)) {
+            $name = basename($path);
+        }
+
+        if (empty($type)) {
+            // open fileinfo database
+            $finfo = finfo_open(FILEINFO_MIME, '/usr/share/misc/magic');
+
+            if (!$finfo) {
+                throw new \Exception('Opening fileinfo database failed, please specify type');
+            }
+
+            $type = finfo_file($finfo, $path);
+            finfo_close($finfo);
+        }
+
+        $this->addImage($type, $name, $base64data);
+
+        return $this;
+    }
+
+    /**
      * an optional address to receive an exact copy of each recipient's email
      *
      * @param string $bccAddress
@@ -720,6 +786,14 @@ class Message
         return $this->attachments;
     }
 
+    /**
+     * @return array
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
+    
     /**
      * @return boolean
      */
