@@ -124,4 +124,16 @@ class MessageTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($message->getSubaccount(), 'Subaccount Name');
     }
+    
+    public function testAddImage()
+    {
+        $message = new Message();
+        
+        $message->addImage('image/jpg', '1x1', '/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AL+AD//Z');
+        
+        $images = $message->getImages();
+        
+        $this->assertEquals(1, count($images));
+        $this->assertEquals($images[0]['name'], '1x1');
+    }
 }
