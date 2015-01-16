@@ -110,6 +110,13 @@ class Message
     protected $urlStripQs = true;
 
     /**
+     * whether or not to automatically inline all CSS styles provided in the message HTML - only for HTML documents less than 256KB in size
+     *
+     * @var bool
+     */
+    protected $inlineCss = false;
+
+    /**
      * whether or not to expose all recipients in to "To" header for each email
      *
      * @var bool
@@ -676,13 +683,6 @@ class Message
         $this->inlineCss = $inlineCss;
         return $this;
     }
-
-    /**
-     * whether or not to automatically inline all CSS styles provided in the message HTML - only for HTML documents less than 256KB in size
-     *
-     * @var bool
-     */
-    protected $inlineCss = false;
 
     /**
      * whether or not to expose all recipients in to "To" header for each email
