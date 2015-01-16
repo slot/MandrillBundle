@@ -666,6 +666,25 @@ class Message
     }
 
     /**
+     * whether or not to automatically inline all CSS styles provided in the message HTML - only for HTML documents less than 256KB in size
+     *
+     * @param boolean $inlineCss
+     * @return Message
+     */
+    public function setInlineCss($inlineCss)
+    {
+        $this->inlineCss = $inlineCss;
+        return $this;
+    }
+
+    /**
+     * whether or not to automatically inline all CSS styles provided in the message HTML - only for HTML documents less than 256KB in size
+     *
+     * @var bool
+     */
+    protected $inlineCss = false;
+
+    /**
      * whether or not to expose all recipients in to "To" header for each email
      *
      * @param boolean $preserveRecipients
@@ -968,6 +987,14 @@ class Message
     public function getUrlStripQs()
     {
         return $this->urlStripQs;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getInlineCss()
+    {
+        return $this->inlineCss;
     }
 
     /**
