@@ -2,12 +2,6 @@
 /*
  * This file is adapted from the Wrep\FOSUserBundleMandrillMailer
  *
- * # config.yml
- * fos_user:
- *   # ...
- *   service:
- *     mailer: hip_mandrill.fosuser.mailer
- *
  * (c) Rick Pastoor <rick@wrep.nl>
  * Edited by: James Moughon <jmoughon@gmail.com>
  *
