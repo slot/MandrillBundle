@@ -556,6 +556,19 @@ class Message
     }
 
     /**
+     * Shortcut to set a reply-to header
+     *
+     * @param string $email
+     * @return \Hip\MandrillBundle\Message
+     */
+    public function setReplyTo($email)
+    {
+        $this->addHeader('Reply-To', $email);
+
+        return $this;
+    }
+
+    /**
      * an optional address to receive an exact copy of each recipient's email
      *
      * @param string $bccAddress

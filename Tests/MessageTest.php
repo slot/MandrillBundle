@@ -136,4 +136,15 @@ class MessageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(1, count($images));
         $this->assertEquals($images[0]['name'], '1x1');
     }
+
+    public function testSetReplyTo()
+    {
+        $testString = "foo@bar.baz";
+
+        $message = new Message();
+
+        $message->setReplyTo($testString);
+
+        $this->assertEquals($testString, $message->getHeaders()['Reply-To']);
+    }
 }
