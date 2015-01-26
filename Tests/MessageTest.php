@@ -144,15 +144,16 @@ class MessageTest extends \PHPUnit_Framework_TestCase
         $message = new Message();
 
         $message->setReplyTo($testString);
-
-        $this->assertEquals($testString, $message->getHeaders()['Reply-To']);
+        $headers = $message->getHeaders();
+        $this->assertEquals($testString, $headers['Reply-To']);
     }
 
     public function testIsImportant()
     {
         $message = new Message();
         $message->isImportant();
-        $this->assertEquals("High", $message->getHeaders()['Importance']);
-        $this->assertEquals("urgent", $message->getHeaders()['Priority']);
+        $headers = $message->getHeaders();
+        $this->assertEquals('High', $headers['Importance']);
+        $this->assertEquals('urgent', $headers['Priority']);
     }
 }
