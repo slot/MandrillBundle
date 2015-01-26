@@ -74,6 +74,16 @@ hip_mandrill:
         subaccount: Project # Optionally define a subaccount to use
 ```
 
+To override the FOSUserBundle Mailer:
+
+```yaml
+# config.yml
+fos_user:
+    # ...
+    service:
+        mailer: hip_mandrill.fosuser.mailer
+```
+
 Now you're all set, send your first transactional mails:
 
 Use

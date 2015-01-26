@@ -1,6 +1,7 @@
 parameters:
     hip_mandrill.client.class: Mandrill
     hip_mandrill.dispatcher.class: Hip\MandrillBundle\Dispatcher
+    hip_mandrill.fosuser.mailer.class: Hip\MandrillBundle\UserBundle\MandrillMailer
 
 services:
     hip_mandrill.client:
@@ -11,4 +12,5 @@ services:
         class: %hip_mandrill.dispatcher.class%
         arguments: [@hip_mandrill.client, %hip_mandrill.default.sender%, %hip_mandrill.default.sender_name%, %hip_mandrill.default.subaccount%, %hip_mandrill.disable_delivery%]
 
-
+    hip_mandrill.fosuser.mailer:
+      class: %hip_mandrill.fosuser.mailer.class%
