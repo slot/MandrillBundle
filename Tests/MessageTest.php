@@ -153,5 +153,6 @@ class MessageTest extends \PHPUnit_Framework_TestCase
         $message = new Message();
         $message->isImportant();
         $this->assertEquals("High", $message->getHeaders()['Importance']);
+        $this->assertEquals("urgent", $message->getHeaders()['Priority']);
     }
 }

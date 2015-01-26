@@ -576,6 +576,7 @@ class Message
     public function isImportant()
     {
         $this->addHeader('Importance', 'High');
+        $this->addHeader("Priority", "urgent");
 
         return $this;
     }
