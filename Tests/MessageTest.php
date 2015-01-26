@@ -147,4 +147,11 @@ class MessageTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($testString, $message->getHeaders()['Reply-To']);
     }
+
+    public function testIsImportant()
+    {
+        $message = new Message();
+        $message->isImportant();
+        $this->assertEquals("High", $message->getHeaders()['Importance']);
+    }
 }

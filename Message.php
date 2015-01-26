@@ -569,6 +569,14 @@ class Message
     }
 
     /**
+     * Shortcut to mark a message as important
+     */
+    public function isImportant()
+    {
+        $this->addHeader('Importance', 'High');
+    }
+
+    /**
      * an optional address to receive an exact copy of each recipient's email
      *
      * @param string $bccAddress
