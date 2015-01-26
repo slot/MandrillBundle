@@ -88,12 +88,12 @@ Simple controller Example:
 // src/Hip/ExampleBundle/Controller/ExampleController.php
 namespace Hip\ExampleBundle\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
-
 use Hip\MandrillBundle\Message;
 use Hip\MandrillBundle\Dispatcher;
 
-class ExampleController
+class ExampleController extends Controller
 {
     public function indexAction()
     {
