@@ -293,6 +293,8 @@ class Message
             'name' => $name,
             'content' => $content,
         );
+
+        $this->setMerge(true);
  
         return $this;
     }
@@ -318,6 +320,8 @@ class Message
                 )
             )
         );
+
+        $this->setMerge(true);
 
         return $this;
     }

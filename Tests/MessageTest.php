@@ -156,4 +156,21 @@ class MessageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('High', $headers['Importance']);
         $this->assertEquals('urgent', $headers['Priority']);
     }
+
+    public function testSetMergeVar()
+    {
+        $message = new Message();
+        $this->assertEquals(false, $message->getMerge());
+        $message->addMergeVar('test@foo.com', 'testkey', 'testvalue');
+        $this->assertEquals(true, $message->getMerge());
+    }
+
+    public function testSetGlobalMergeVar()
+    {
+        $message = new Message();
+        $this->assertEquals(false, $message->getMerge());
+        $message->addGlobalMergeVar('testkey', 'testvalue');
+        $this->assertEquals(true, $message->getMerge());
+    }
+
 }
