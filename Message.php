@@ -570,10 +570,14 @@ class Message
 
     /**
      * Shortcut to mark a message as important
+     *
+     * @return \Hip\MandrillBundle\Message
      */
     public function isImportant()
     {
         $this->addHeader('Importance', 'High');
+
+        return $this;
     }
 
     /**
