@@ -27,7 +27,7 @@ namespace Hip\MandrillBundle;
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  *
- * @author: Sven Loth <sven.loth@hipaway.com>
+ * @author: Sven Loth <sven@svenloth.de>
  * @copyright: 2013 Hipaway Travel GmbH, Berlin
  */
 class Message
@@ -86,42 +86,56 @@ class Message
      *
      * @var bool
      */
-    protected $trackOpens = true;
+    protected $trackOpens = null;
 
     /**
      * whether or not to turn on click tracking for the message
      *
      * @var bool
      */
-    protected $trackClicks = true;
+    protected $trackClicks = null;
 
     /**
      * whether or not to automatically generate a text part for messages that are not given text
      *
      * @var bool
      */
-    protected $autoText = true;
+    protected $autoText = null;
+
+    /**
+     *
+     *
+     * @var null
+     */
+    protected $autoHtml = null;
 
     /**
      * whether or not to strip the query string from URLs when aggregating tracked URL data
      *
      * @var bool
      */
-    protected $urlStripQs = true;
+    protected $urlStripQs = null;
 
     /**
      * whether or not to automatically inline all CSS styles provided in the message HTML - only for HTML documents less than 256KB in size
      *
      * @var bool
      */
-    protected $inlineCss = false;
+    protected $inlineCss = null;
 
     /**
      * whether or not to expose all recipients in to "To" header for each email
      *
      * @var bool
      */
-    protected $preserveRecipients = true;
+    protected $preserveRecipients = null;
+
+    /**
+     *
+     *
+     * @var Boolean
+     */
+    protected $viewContentLink = null;
 
     /**
      * an optional address to receive an exact copy of each recipient's email
@@ -137,6 +151,21 @@ class Message
      * @var bool
      */
     protected $merge = false;
+
+    /**
+     * the merge tag language to use when evaluating merge tags, either mailchimp or handlebars
+     * one of(mailchimp, handlebars)
+     *
+     * @var string $mergeLanguage
+     */
+    protected $mergeLanguage = 'mailchimp';
+
+    /**
+     * whether or not this message is important, and should be delivered ahead of non-important messages
+     *
+     * @var bool $important
+     */
+    protected $important = false;
 
     /**
      * global merge variables to use for all recipients. You can override these per recipient.
@@ -228,21 +257,49 @@ class Message
      *
      * @var string
      */
-    protected $trackingDomain;
+    protected $trackingDomain = null;
 
     /**
      * a custom domain to use for SPF/DKIM signing instead of mandrill (for "via" or "on behalf of" in email clients)
      *
-     * @var string
+     * @var string $signingDomain
      */
-    protected $signingDomain;
+    protected $signingDomain = null;
 
     /**
      * a custom domain to use for the messages's return-path
      *
-     * @var string
+     * @var string $returnPathDomain
      */
-    protected $returnPathDomain;
+    protected $returnPathDomain = null;
+
+    /**
+     * enable a background sending mode that is optimized for bulk sending. In async mode, messages/send will
+     * immediately return a status of "queued" for every recipient. To handle rejections when sending in async mode,
+     * set up a webhook for the 'reject' event. Defaults to false for messages with no more than 10 recipients; messages
+     * with more than 10 recipients are always sent asynchronously, regardless of the value of async.
+     *
+     * @var bool $async
+     */
+    protected $async = false;
+
+    /**
+     * the name of the dedicated ip pool that should be used to send the message. If you do not have any dedicated IPs,
+     * this parameter has no effect. If you specify a pool that does not exist, your default pool will be used instead.
+     *
+     * @var String $ipPool Pool name
+     */
+    protected $ipPool = null;
+
+    /**
+     * when this message should be sent as a UTC timestamp in YYYY-MM-DD HH:MM:SS format. If you specify a time in the
+     * past, the message will be sent immediately. An additional fee applies for scheduled email, and this feature is
+     * only available to accounts with a positive balance.
+     * Validation: datetime
+     *
+     * @var String $sendAt YYYY-MM-DD HH:MM:SS
+     */
+    protected $sendAt = null;
 
     /**
      * Add a recipient
@@ -579,6 +636,7 @@ class Message
      */
     public function isImportant()
     {
+        $this->important = true;
         $this->addHeader('Importance', 'High');
         $this->addHeader("Priority", "urgent");
 
@@ -1050,4 +1108,102 @@ class Message
     {
         return $this->trackingDomain;
     }
+
+    /**
+     * @return null
+     */
+    public function getAutoHtml()
+    {
+        return $this->autoHtml;
+    }
+
+    /**
+     * @param null $autoHtml
+     */
+    public function setAutoHtml($autoHtml)
+    {
+        $this->autoHtml = $autoHtml;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isViewContentLink()
+    {
+        return $this->viewContentLink;
+    }
+
+    /**
+     * @param boolean $viewContentLink
+     */
+    public function setViewContentLink($viewContentLink)
+    {
+        $this->viewContentLink = $viewContentLink;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMergeLanguage()
+    {
+        return $this->mergeLanguage;
+    }
+
+    /**
+     * @param string $mergeLanguage
+     */
+    public function setMergeLanguage($mergeLanguage)
+    {
+        $this->mergeLanguage = $mergeLanguage;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isAsync()
+    {
+        return $this->async;
+    }
+
+    /**
+     * @param boolean $async
+     */
+    public function setAsync($async)
+    {
+        $this->async = $async;
+    }
+
+    /**
+     * @return String
+     */
+    public function getIpPool()
+    {
+        return $this->ipPool;
+    }
+
+    /**
+     * @param String $ipPool
+     */
+    public function setIpPool($ipPool)
+    {
+        $this->ipPool = $ipPool;
+    }
+
+    /**
+     * @return String
+     */
+    public function getSendAt()
+    {
+        return $this->sendAt;
+    }
+
+    /**
+     * @param String $sendAt
+     */
+    public function setSendAt($sendAt)
+    {
+        $this->sendAt = $sendAt;
+    }
+
+
 }
