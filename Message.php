@@ -273,33 +273,6 @@ class Message
      */
     protected $returnPathDomain = null;
 
-    /**
-     * enable a background sending mode that is optimized for bulk sending. In async mode, messages/send will
-     * immediately return a status of "queued" for every recipient. To handle rejections when sending in async mode,
-     * set up a webhook for the 'reject' event. Defaults to false for messages with no more than 10 recipients; messages
-     * with more than 10 recipients are always sent asynchronously, regardless of the value of async.
-     *
-     * @var bool $async
-     */
-    protected $async = false;
-
-    /**
-     * the name of the dedicated ip pool that should be used to send the message. If you do not have any dedicated IPs,
-     * this parameter has no effect. If you specify a pool that does not exist, your default pool will be used instead.
-     *
-     * @var String $ipPool Pool name
-     */
-    protected $ipPool = null;
-
-    /**
-     * when this message should be sent as a UTC timestamp in YYYY-MM-DD HH:MM:SS format. If you specify a time in the
-     * past, the message will be sent immediately. An additional fee applies for scheduled email, and this feature is
-     * only available to accounts with a positive balance.
-     * Validation: datetime
-     *
-     * @var String $sendAt YYYY-MM-DD HH:MM:SS
-     */
-    protected $sendAt = null;
 
     /**
      * Add a recipient
@@ -1157,53 +1130,7 @@ class Message
         $this->mergeLanguage = $mergeLanguage;
     }
 
-    /**
-     * @return boolean
-     */
-    public function isAsync()
-    {
-        return $this->async;
-    }
 
-    /**
-     * @param boolean $async
-     */
-    public function setAsync($async)
-    {
-        $this->async = $async;
-    }
-
-    /**
-     * @return String
-     */
-    public function getIpPool()
-    {
-        return $this->ipPool;
-    }
-
-    /**
-     * @param String $ipPool
-     */
-    public function setIpPool($ipPool)
-    {
-        $this->ipPool = $ipPool;
-    }
-
-    /**
-     * @return String
-     */
-    public function getSendAt()
-    {
-        return $this->sendAt;
-    }
-
-    /**
-     * @param String $sendAt
-     */
-    public function setSendAt($sendAt)
-    {
-        $this->sendAt = $sendAt;
-    }
 
 
 }
