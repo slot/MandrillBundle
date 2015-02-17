@@ -102,15 +102,8 @@ class Dispatcher
 
         if (!empty($templateName)) {
             return $this->service->messages->sendTemplate($templateName, $templateContent, $message->toArray(), $async, $ipPool, $sendAt);
-
         }
 
         return $this->service->messages->send($message->toArray(), $async, $ipPool, $sendAt);
-
     }
-
-
-
-
-
 }
