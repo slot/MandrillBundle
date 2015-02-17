@@ -72,6 +72,14 @@ hip_mandrill:
         sender: info@example.com
         sender_name: John Doe
         subaccount: Project # Optionally define a subaccount to use
+    proxy:
+        use: true # when you are behing a proxy. Default value is 'false'
+        host: example.com
+        port: 80
+        user: john
+        password: doe123
+    ssl:
+        verify: true # verify the SSL certificats. Default value is 'true'
 ```
 
 Now you're all set, send your first transactional mails:
