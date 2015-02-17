@@ -87,6 +87,12 @@ class Dispatcher
         $this->disableDelivery = $disableDelivery;
         $this->proxy = $proxy;
         $this->ssl = $ssl;
+
+        if ($this->useProxy()) {
+            $this->addCurlProxyOptions();
+        }
+
+        $this->addCurlSSLOptions();
     }
 
     /**
@@ -106,12 +112,6 @@ class Dispatcher
         if ($this->disableDelivery) {
             return false;
         }
-
-        if ($this->useProxy()) {
-            $this->addCurlProxyOptions();
-        }
-
-        $this->addCurlSSLOptions();
 
         if (strlen($message->getFromEmail()) == 0) {
             $message->setFromEmail($this->defaultSender);
