@@ -61,16 +61,32 @@ class Dispatcher
     protected $defaultSenderName;
 
     /**
+     * Proxy options
+     *
+     * @var array
+     */
+    protected $proxy;
+
+    /**
+     * SSL options
+     *
+     * @var array
+     */
+    protected $ssl;
+
+    /**
      * @var bool
      */
     protected $disableDelivery;
 
-    public function __construct($service, $defaultSender, $defaultSenderName, $subaccount, $disableDelivery) {
+    public function __construct($service, $defaultSender, $defaultSenderName, $subaccount, $disableDelivery, $proxy, $ssl) {
         $this->service = $service;
         $this->defaultSender = $defaultSender;
         $this->defaultSenderName = $defaultSenderName;
         $this->subaccount = $subaccount;
         $this->disableDelivery = $disableDelivery;
+        $this->proxy = $proxy;
+        $this->ssl = $ssl;
     }
 
     /**
@@ -91,6 +107,12 @@ class Dispatcher
             return false;
         }
 
+        if ($this->useProxy()) {
+            $this->addCurlProxyOptions();
+        }
+
+        $this->addCurlSSLOptions();
+
         if (strlen($message->getFromEmail()) == 0) {
             $message->setFromEmail($this->defaultSender);
             $message->setFromName($this->defaultSenderName);
@@ -105,5 +127,34 @@ class Dispatcher
         }
 
         return $this->service->messages->send($message->toArray(), $async, $ipPool, $sendAt);
+    }
+
+    private function useProxy()
+    {
+        return $this->proxy['use'];
+    }
+
+    private function addCurlProxyOptions()
+    {
+        if ($this->proxy['host'] !== null) {
+            curl_setopt($this->service->ch, CURLOPT_PROXY, $this->proxy['host']);
+        }
+        
+        if ($this->proxy['port'] !== null) {
+            curl_setopt($this->service->ch, CURLOPT_PROXYPORT, $this->proxy['port']);
+        }
+        
+        if ($this->proxy['user'] !== null && $this->proxy['password'] !== null) {
+            curl_setopt($this->service->ch, CURLOPT_PROXYUSERPWD, sprintf(
+                '%s:%s',
+                $this->proxy['user'],
+                $this->proxy['password']
+            ));
+        }
+    }
+    
+    private function addCurlSSLOptions()
+    {
+        curl_setopt($this->service->ch, CURLOPT_SSL_VERIFYPEER, $this->ssl['verify']);
     }
 }
