@@ -78,8 +78,6 @@ hip_mandrill:
         port: 80
         user: john
         password: doe123
-    ssl:
-        verify: true # verify the SSL certificats. Default value is 'true'
 ```
 
 Now you're all set, send your first transactional mails:

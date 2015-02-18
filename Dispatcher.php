@@ -68,31 +68,21 @@ class Dispatcher
     protected $proxy;
 
     /**
-     * SSL options
-     *
-     * @var array
-     */
-    protected $ssl;
-
-    /**
      * @var bool
      */
     protected $disableDelivery;
 
-    public function __construct($service, $defaultSender, $defaultSenderName, $subaccount, $disableDelivery, $proxy, $ssl) {
+    public function __construct($service, $defaultSender, $defaultSenderName, $subaccount, $disableDelivery, $proxy) {
         $this->service = $service;
         $this->defaultSender = $defaultSender;
         $this->defaultSenderName = $defaultSenderName;
         $this->subaccount = $subaccount;
         $this->disableDelivery = $disableDelivery;
         $this->proxy = $proxy;
-        $this->ssl = $ssl;
 
         if ($this->useProxy()) {
             $this->addCurlProxyOptions();
         }
-
-        $this->addCurlSSLOptions();
     }
 
     /**
@@ -151,10 +141,5 @@ class Dispatcher
                 $this->proxy['password']
             ));
         }
-    }
-    
-    private function addCurlSSLOptions()
-    {
-        curl_setopt($this->service->ch, CURLOPT_SSL_VERIFYPEER, $this->ssl['verify']);
     }
 }

@@ -66,12 +66,6 @@ class Configuration implements ConfigurationInterface
                     ->scalarNode('password')->defaultNull()->end()
                 ->end()
             ->end()
-            ->arrayNode('ssl')
-                ->addDefaultsIfNotSet()
-                ->children()
-                    ->booleanNode('verify')->defaultTrue()->end()
-                ->end()
-            ->end()
         ->end();
 
         return $treeBuilder;

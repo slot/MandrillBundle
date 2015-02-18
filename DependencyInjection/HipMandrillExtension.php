@@ -52,7 +52,6 @@ class HipMandrillExtension extends Extension
         $container->setParameter('hip_mandrill.default.sender_name', $config['default']['sender_name']);
         $container->setParameter('hip_mandrill.default.subaccount', $config['default']['subaccount']);
         $container->setParameter('hip_mandrill.proxy', $config['proxy']);
-        $container->setParameter('hip_mandrill.ssl', $config['ssl']);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
