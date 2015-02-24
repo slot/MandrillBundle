@@ -56,6 +56,16 @@ class Configuration implements ConfigurationInterface
             ->end()
             ->scalarNode('api_key')->defaultNull()->end()
             ->scalarNode('disable_delivery')->defaultFalse()->end()
+            ->arrayNode('proxy')
+                ->addDefaultsIfNotSet()
+                ->children()
+                    ->booleanNode('use')->defaultFalse()->end()
+                    ->scalarNode('host')->defaultNull()->end()
+                    ->scalarNode('port')->defaultNull()->end()
+                    ->scalarNode('user')->defaultNull()->end()
+                    ->scalarNode('password')->defaultNull()->end()
+                ->end()
+            ->end()
         ->end();
 
         return $treeBuilder;
