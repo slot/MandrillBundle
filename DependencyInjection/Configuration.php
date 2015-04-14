@@ -47,7 +47,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
         ->children()
-            ->arrayNode('default')
+            ->arrayNode('default')->isRequired()->cannotBeEmpty()
                 ->children()
                     ->scalarNode('sender')->end()
                     ->scalarNode('sender_name')->end()
