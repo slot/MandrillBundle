@@ -47,10 +47,11 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
         ->children()
-            ->arrayNode('default')->isRequired()->cannotBeEmpty()
+            ->arrayNode('default')
+                ->isRequired()
                 ->children()
-                    ->scalarNode('sender')->end()
-                    ->scalarNode('sender_name')->end()
+                    ->scalarNode('sender')->isRequired()->cannotBeEmpty()->end()
+                    ->scalarNode('sender_name')->isRequired()->cannotBeEmpty()->end()
                     ->scalarNode('subaccount')->defaultNull()->end()
                 ->end()
             ->end()
