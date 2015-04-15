@@ -122,6 +122,16 @@ class Dispatcher
         return $this->service->messages->send($message->toArray(), $async, $ipPool, $sendAt);
     }
 
+    /**
+     * Get Mandrill service
+     *
+     * @return \Mandrill
+     */
+    public function getService()
+    {
+        return $this->service;
+    }
+
     private function useProxy()
     {
         return $this->proxy['use'];
