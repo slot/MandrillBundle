@@ -132,6 +132,11 @@ class Dispatcher
         return $this->service;
     }
 
+    public function getUser()
+    {
+
+    }
+
     private function useProxy()
     {
         return $this->proxy['use'];
