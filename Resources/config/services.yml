@@ -10,7 +10,7 @@ services:
 
     hip_mandrill.mandrill:
       class: %hip_mandrill.mandrill.class%
-      arguments: [@hip_mandrill.clint]
+      arguments: [@hip_mandrill.client]
 
     hip_mandrill.dispatcher:
         class: %hip_mandrill.dispatcher.class%
