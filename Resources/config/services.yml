@@ -1,11 +1,16 @@
 parameters:
     hip_mandrill.client.class: Mandrill
+    hip_mandrill.mandrill.class: Hip\MandrillBundle\Mandrill
     hip_mandrill.dispatcher.class: Hip\MandrillBundle\Dispatcher
 
 services:
     hip_mandrill.client:
         class: %hip_mandrill.client.class%
         arguments: [%hip_mandrill.api_key%]
+
+    hip_mandrill.mandrill:
+      class: %hip_mandrill.mandrill.class%
+      arguments: [@hip_mandrill.clint]
 
     hip_mandrill.dispatcher:
         class: %hip_mandrill.dispatcher.class%
