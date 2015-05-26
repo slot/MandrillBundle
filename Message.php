@@ -291,6 +291,21 @@ class Message
     }
 
     /**
+     * Set recipients
+     * Accepts an array of values like Message->addTo() function. This will override the $to array.
+     *
+     * @param array $recipients
+     *
+     * @return Message
+     */
+    public function setTo($recipients = array())
+    {
+        $this->to = $recipients;
+
+        return $this;
+    }
+
+    /**
      * Add extra header
      *
      * currently only Reply-To and X-* headers are allowed
