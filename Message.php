@@ -300,7 +300,13 @@ class Message
      */
     public function setTo(array $recipients = array())
     {
-        $this->to = $recipients;
+        $this->to = array();
+        foreach($recipients as $recipient) {
+            $email = $recipient['email'];
+            $name = array_key_exists('name', $recipient) ? $recipient['name'] : '';
+            $type = array_key_exists('type', $recipient) ? $recipient['type'] : 'to';
+            $this->addTo($email, $name, $type);
+        }
 
         return $this;
     }
