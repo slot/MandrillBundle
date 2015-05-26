@@ -298,7 +298,7 @@ class Message
      *
      * @return Message
      */
-    public function setTo($recipients = array())
+    public function setTo(array $recipients = array())
     {
         $this->to = $recipients;
 
