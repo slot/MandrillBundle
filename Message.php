@@ -493,8 +493,6 @@ class Message
         );
 
         return $this;
-
-
     }
 
     public function addAttachmentFromPath($path, $type = '', $name = '') {
@@ -742,6 +740,7 @@ class Message
     public function setInlineCss($inlineCss)
     {
         $this->inlineCss = $inlineCss;
+
         return $this;
     }
 
@@ -818,26 +817,35 @@ class Message
 
     /**
      * @param string $returnPathDomain
+     * @return \Hip\MandrillBundle\Message
      */
     public function setReturnPathDomain($returnPathDomain)
     {
         $this->returnPathDomain = $returnPathDomain;
+
+        return $this;
     }
 
     /**
      * @param string $signingDomain
+     * @return \Hip\MandrillBundle\Message
      */
     public function setSigningDomain($signingDomain)
     {
         $this->signingDomain = $signingDomain;
+
+        return $this;
     }
 
     /**
      * @param string $trackingDomain
+     * @return \Hip\MandrillBundle\Message
      */
     public function setTrackingDomain($trackingDomain)
     {
         $this->trackingDomain = $trackingDomain;
+
+        return $this;
     }
 
     public function toArray()
@@ -1092,10 +1100,13 @@ class Message
 
     /**
      * @param null $autoHtml
+     * @return \Hip\MandrillBundle\Message
      */
     public function setAutoHtml($autoHtml)
     {
         $this->autoHtml = $autoHtml;
+
+        return $this;
     }
 
     /**
@@ -1108,10 +1119,13 @@ class Message
 
     /**
      * @param boolean $viewContentLink
+     * @return \Hip\MandrillBundle\Message
      */
     public function setViewContentLink($viewContentLink)
     {
         $this->viewContentLink = $viewContentLink;
+
+        return $this;
     }
 
     /**
@@ -1124,13 +1138,12 @@ class Message
 
     /**
      * @param string $mergeLanguage
+     * @return \Hip\MandrillBundle\Message
      */
     public function setMergeLanguage($mergeLanguage)
     {
         $this->mergeLanguage = $mergeLanguage;
+
+        return $this;
     }
-
-
-
-
 }
