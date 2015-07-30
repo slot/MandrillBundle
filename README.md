@@ -70,7 +70,7 @@ hip_mandrill:
     disable_delivery: true # useful for dev/test environment. Default value is 'false'
     default:
         sender: info@example.com
-        sender_name: John Doe
+        sender_name: John Doe # Optionally define a sender name (from name)
         subaccount: Project # Optionally define a subaccount to use
     proxy:
         use: true # when you are behing a proxy. Default value is 'false'
