@@ -127,3 +127,8 @@ class ExampleController extends Controller
 }
 
 ```
+
+Using Handlebars
+----------------
+By default the bundle will assume the merge language is 'mailchimp'. You can
+change this with `$message->setMergeLanaguage('handlebars')`
