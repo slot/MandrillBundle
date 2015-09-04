@@ -72,13 +72,15 @@ class Dispatcher
      */
     protected $disableDelivery;
 
-    public function __construct($service, $defaultSender, $defaultSenderName, $subaccount, $disableDelivery, $proxy) {
+    public function __construct($service, $defaultSender, $defaultSenderName, $subaccount, $disableDelivery, $proxy, $debug) {
         $this->service = $service;
         $this->defaultSender = $defaultSender;
         $this->defaultSenderName = $defaultSenderName;
         $this->subaccount = $subaccount;
         $this->disableDelivery = $disableDelivery;
         $this->proxy = $proxy;
+
+        $this->service->debug = $debug;
 
         if ($this->useProxy()) {
             $this->addCurlProxyOptions();
