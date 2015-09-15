@@ -68,6 +68,9 @@ Log in to Mandrill and go to "Settings" -> "SMTP and API Credentials". Create an
 hip_mandrill:
     api_key: xxxxx
     disable_delivery: true # useful for dev/test environment. Default value is 'false'
+    # debug: passed to \Mandrill causing it to output curl requests. Useful to see output
+    # from CLI script. Default value is 'false'
+    debug: true
     default:
         sender: info@example.com
         sender_name: John Doe
@@ -124,3 +127,8 @@ class ExampleController extends Controller
 }
 
 ```
+
+Using Handlebars
+----------------
+By default the bundle will assume the merge language is 'mailchimp'. You can
+change this with `$message->setMergeLanguage('handlebars')`

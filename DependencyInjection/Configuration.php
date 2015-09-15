@@ -57,6 +57,7 @@ class Configuration implements ConfigurationInterface
             ->end()
             ->scalarNode('api_key')->defaultNull()->end()
             ->scalarNode('disable_delivery')->defaultFalse()->end()
+            ->scalarNode('debug')->defaultFalse()->end()
             ->arrayNode('proxy')
                 ->addDefaultsIfNotSet()
                 ->children()
