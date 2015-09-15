@@ -109,7 +109,7 @@ class Dispatcher
             $message->setFromEmail($this->defaultSender);
         }
 
-        if (strlen($message->getFromName()) == 0) {
+        if (strlen($message->getFromName()) == 0 && null !== $this->defaultSenderName) {
             $message->setFromName($this->defaultSenderName);
         }
 
@@ -144,11 +144,11 @@ class Dispatcher
         if ($this->proxy['host'] !== null) {
             curl_setopt($this->service->ch, CURLOPT_PROXY, $this->proxy['host']);
         }
-        
+
         if ($this->proxy['port'] !== null) {
             curl_setopt($this->service->ch, CURLOPT_PROXYPORT, $this->proxy['port']);
         }
-        
+
         if ($this->proxy['user'] !== null && $this->proxy['password'] !== null) {
             curl_setopt($this->service->ch, CURLOPT_PROXYUSERPWD, sprintf(
                 '%s:%s',

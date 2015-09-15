@@ -51,7 +51,7 @@ class Configuration implements ConfigurationInterface
                 ->isRequired()
                 ->children()
                     ->scalarNode('sender')->isRequired()->cannotBeEmpty()->end()
-                    ->scalarNode('sender_name')->isRequired()->cannotBeEmpty()->end()
+                    ->scalarNode('sender_name')->defaultNull()->end()
                     ->scalarNode('subaccount')->defaultNull()->end()
                 ->end()
             ->end()
