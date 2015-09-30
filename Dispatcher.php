@@ -72,7 +72,8 @@ class Dispatcher
      */
     protected $disableDelivery;
 
-    public function __construct($service, $defaultSender, $defaultSenderName, $subaccount, $disableDelivery, $proxy, $debug) {
+    public function __construct($service, $defaultSender, $defaultSenderName, $subaccount, $disableDelivery, $proxy, $debug = false)
+    {
         $this->service = $service;
         $this->defaultSender = $defaultSender;
         $this->defaultSenderName = $defaultSenderName;
@@ -99,7 +100,7 @@ class Dispatcher
      *
      * @return array|bool
      */
-    public function send(Message $message, $templateName = '', $templateContent = array(), $async = false, $ipPool=null, $sendAt=null)
+    public function send(Message $message, $templateName = '', $templateContent = array(), $async = false, $ipPool = null, $sendAt = null)
     {
         if ($this->disableDelivery) {
             return false;
