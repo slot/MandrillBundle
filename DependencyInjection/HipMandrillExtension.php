@@ -48,6 +48,7 @@ class HipMandrillExtension extends Extension
 
         $container->setParameter('hip_mandrill.api_key', $config['api_key']);
         $container->setParameter('hip_mandrill.disable_delivery', $config['disable_delivery']);
+        $container->setParameter('hip_mandrill.delivery_address', $config['delivery_address']);
         $container->setParameter('hip_mandrill.default.sender', $config['default']['sender']);
         $container->setParameter('hip_mandrill.default.sender_name', $config['default']['sender_name']);
         $container->setParameter('hip_mandrill.default.subaccount', $config['default']['subaccount']);

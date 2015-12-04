@@ -72,12 +72,20 @@ class Dispatcher
      */
     protected $disableDelivery;
 
-    public function __construct($service, $defaultSender, $defaultSenderName, $subaccount, $disableDelivery, $proxy, $debug) {
+    /**
+     * Delivery address which overrides message recipient
+     *
+     * @var string
+     */
+    protected $deliveryAddress;
+
+    public function __construct($service, $defaultSender, $defaultSenderName, $subaccount, $disableDelivery, $deliveryAddress, $proxy, $debug) {
         $this->service = $service;
         $this->defaultSender = $defaultSender;
         $this->defaultSenderName = $defaultSenderName;
         $this->subaccount = $subaccount;
         $this->disableDelivery = $disableDelivery;
+        $this->deliveryAddress = $deliveryAddress;
         $this->proxy = $proxy;
 
         $this->service->debug = $debug;
@@ -117,11 +125,17 @@ class Dispatcher
             $message->setSubaccount($this->subaccount);
         }
 
-        if (!empty($templateName)) {
-            return $this->service->messages->sendTemplate($templateName, $templateContent, $message->toArray(), $async, $ipPool, $sendAt);
+        if (null !== $this->deliveryAddress) {
+            $deliveryAddress = $this->deliveryAddress;
+        } else {
+            $deliveryAddress = $message->toArray();
         }
 
-        return $this->service->messages->send($message->toArray(), $async, $ipPool, $sendAt);
+        if (!empty($templateName)) {
+            return $this->service->messages->sendTemplate($templateName, $templateContent, $deliveryAddress, $async, $ipPool, $sendAt);
+        }
+
+        return $this->service->messages->send($deliveryAddress, $async, $ipPool, $sendAt);
     }
 
     /**
