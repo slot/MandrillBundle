@@ -295,7 +295,7 @@ class Message
      *
      * @param string $email
      * @param string $name
-     * @param string $to
+     * @param string $type
      *
      * @return Message
      */
