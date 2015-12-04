@@ -301,9 +301,8 @@ class Message
      */
     public function replaceTo($email, $name = '', $type = 'to')
     {
-        $this->to = array(
-            array('email' => $email, 'name' => $name, 'type' => $type)
-        );
+        $this->to = array();
+        $this->addTo($email, $name, $type);
 
         return $this;
     }
