@@ -299,7 +299,7 @@ class Message
      *
      * @return Message
      */
-    public function replaceTo($email, $name = '', $type = 'to')
+    public function resetTo($email, $name = '', $type = 'to')
     {
         $this->to = array();
         $this->addTo($email, $name, $type);
