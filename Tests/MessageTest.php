@@ -82,19 +82,19 @@ class MessageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($recipientArray[2]['type'], 'bcc');
     }
 
-    public function testReplaceTo()
+    public function testResetTo()
     {
         $message = new Message();
         $message->addTo('to-test@example.com', 'Foo Bar');
         $message->addTo('cc-test@example.com', 'Foo User', 'cc');
         $message->addTo('bcc-test@example.com', 'Bar User', 'bcc');
-        $message->replaceTo('replace@example.com');
+        $message->resetTo('debug@example.com');
         $recipientArray = $message->getTo();
 
         $this->assertTrue(is_array($recipientArray));
         $this->assertEquals(count($recipientArray), 1);
         $this->assertArrayHasKey('email', $recipientArray[0]);
-        $this->assertEquals($recipientArray[0]['email'], 'replace@example.com');
+        $this->assertEquals($recipientArray[0]['email'], 'debug@example.com');
     }
 
     public function testHeaderIsInitialized()
