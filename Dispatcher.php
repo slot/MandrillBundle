@@ -126,7 +126,7 @@ class Dispatcher
         }
 
         if (null !== $this->deliveryAddress) {
-            $message->replaceTo($this->deliveryAddress);
+            $message->resetTo($this->deliveryAddress);
         }
 
         if (!empty($templateName)) {
