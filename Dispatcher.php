@@ -126,16 +126,14 @@ class Dispatcher
         }
 
         if (null !== $this->deliveryAddress) {
-            $deliveryAddress = $this->deliveryAddress;
-        } else {
-            $deliveryAddress = $message->toArray();
+            $message->replaceTo($this->deliveryAddress);
         }
 
         if (!empty($templateName)) {
-            return $this->service->messages->sendTemplate($templateName, $templateContent, $deliveryAddress, $async, $ipPool, $sendAt);
+            return $this->service->messages->sendTemplate($templateName, $templateContent, $message->toArray(), $async, $ipPool, $sendAt);
         }
 
-        return $this->service->messages->send($deliveryAddress, $async, $ipPool, $sendAt);
+        return $this->service->messages->send($message->toArray(), $async, $ipPool, $sendAt);
     }
 
     /**
