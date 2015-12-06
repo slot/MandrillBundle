@@ -79,7 +79,7 @@ class Dispatcher
      */
     protected $deliveryAddress;
 
-    public function __construct($service, $defaultSender, $defaultSenderName, $subaccount, $disableDelivery, $deliveryAddress, $proxy, $debug = false) {
+    public function __construct($service, $defaultSender, $defaultSenderName, $subaccount, $disableDelivery, $deliveryAddress, $proxy, $debug = false)
     {
         $this->service = $service;
         $this->defaultSender = $defaultSender;
