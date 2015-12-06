@@ -68,6 +68,7 @@ Log in to Mandrill and go to "Settings" -> "SMTP and API Credentials". Create an
 hip_mandrill:
     api_key: xxxxx
     disable_delivery: true # useful for dev/test environment. Default value is 'false'
+    delivery_address: john@doe.com # useful for dev environment. Allow to override message delivery addresses by a specific address. Default value is 'null'
     # debug: passed to \Mandrill causing it to output curl requests. Useful to see output
     # from CLI script. Default value is 'false'
     debug: true

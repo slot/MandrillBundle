@@ -291,6 +291,23 @@ class Message
     }
 
     /**
+     * Replace all recipients by a specific recipient
+     *
+     * @param string $email
+     * @param string $name
+     * @param string $type
+     *
+     * @return Message
+     */
+    public function resetTo($email, $name = '', $type = 'to')
+    {
+        $this->to = array();
+        $this->addTo($email, $name, $type);
+
+        return $this;
+    }
+
+    /**
      * Add extra header
      *
      * currently only Reply-To and X-* headers are allowed

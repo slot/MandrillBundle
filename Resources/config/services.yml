@@ -9,4 +9,4 @@ services:
 
     hip_mandrill.dispatcher:
         class: %hip_mandrill.dispatcher.class%
-        arguments: [@hip_mandrill.client, %hip_mandrill.default.sender%, %hip_mandrill.default.sender_name%, %hip_mandrill.default.subaccount%, %hip_mandrill.disable_delivery%, %hip_mandrill.proxy%, %hip_mandrill.debug%]
+        arguments: [@hip_mandrill.client, %hip_mandrill.default.sender%, %hip_mandrill.default.sender_name%, %hip_mandrill.default.subaccount%, %hip_mandrill.disable_delivery%, %hip_mandrill.delivery_address%, %hip_mandrill.proxy%, %hip_mandrill.debug%]
