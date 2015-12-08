@@ -4,9 +4,9 @@ parameters:
 
 services:
     hip_mandrill.client:
-        class: %hip_mandrill.client.class%
-        arguments: [%hip_mandrill.api_key%]
+        class: "%hip_mandrill.client.class%"
+        arguments: ["%hip_mandrill.api_key%"]
 
     hip_mandrill.dispatcher:
-        class: %hip_mandrill.dispatcher.class%
-        arguments: [@hip_mandrill.client, %hip_mandrill.default.sender%, %hip_mandrill.default.sender_name%, %hip_mandrill.default.subaccount%, %hip_mandrill.disable_delivery%, %hip_mandrill.proxy%, %hip_mandrill.debug%]
+        class: "%hip_mandrill.dispatcher.class%"
+        arguments: ["@hip_mandrill.client", "%hip_mandrill.default.sender%", "%hip_mandrill.default.sender_name%", "%hip_mandrill.default.subaccount%", "%hip_mandrill.disable_delivery%", "%hip_mandrill.proxy%", "%hip_mandrill.debug%"]
