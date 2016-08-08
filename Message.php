@@ -291,6 +291,31 @@ class Message
     }
 
     /**
+     * Set recipients
+     * Accepts an array of values like Message->addTo() function. This will override the $to array.
+     *
+     * @param array $recipients
+     *
+     * @return Message
+     */
+    public function setTo(array $recipients = array())
+    {
+        $this->to = array();
+        foreach($recipients as $recipient) {
+            if (!array_key_exists('email', $recipient)) {
+                throw new \Exception("An email is required");
+            }
+
+            $email =  $recipient['email'];
+            $name = array_key_exists('name', $recipient) ? $recipient['name'] : '';
+            $type = array_key_exists('type', $recipient) ? $recipient['type'] : 'to';
+            $this->addTo($email, $name, $type);
+        }
+
+        return $this;
+    }
+
+    /**
      * Add extra header
      *
      * currently only Reply-To and X-* headers are allowed
