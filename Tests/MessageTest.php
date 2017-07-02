@@ -1,6 +1,7 @@
 <?php
 
 use Slot\MandrillBundle\Message;
+use Phpunit\Framework\TestCase;
 
 /**
  * Message Tests
@@ -8,7 +9,7 @@ use Slot\MandrillBundle\Message;
  * @author   : Sven Loth <sven.loth@me.com>
  * @copyright: 2017 Sven Loth <sven.loth@me.com>, Berlin
  */
-class MessageTest extends \PHPUnit_Framework_TestCase
+class MessageTest extends TestCase
 {
     public function testToIsInitializedAsArray()
     {

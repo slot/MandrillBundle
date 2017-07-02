@@ -17,9 +17,14 @@
         }
     ],
     "require": {
-        "symfony/http-foundation": ">=2.1",
-        "symfony/config": ">=2.1",
+        "symfony/http-foundation": ">=3.0",
+        "symfony/config": ">=3.0",
         "mandrill/mandrill": "1.*"
+    },
+    "require-dev": {
+        "symfony/phpunit-bridge": "^3.0",
+        "symfony/debug": "^3.0",
+        "phpunit/phpunit": "6.2.2"
     },
     "autoload": {
         "psr-0": { "Slot\\MandrillBundle": "" }
