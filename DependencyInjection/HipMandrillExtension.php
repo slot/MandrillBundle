@@ -1,6 +1,6 @@
 <?php
 
-namespace Hip\MandrillBundle\DependencyInjection;
+namespace Slot\MandrillBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -36,7 +36,7 @@ use Symfony\Component\DependencyInjection\Loader;
  * @author: Sven Loth <sven.loth@hipaway.com>
  * @copyright: 2013 Hipaway Travel GmbH, Berlin
  */
-class HipMandrillExtension extends Extension
+class SlotMandrillExtension extends Extension
 {
     /**
      * {@inheritDoc}
@@ -46,13 +46,13 @@ class HipMandrillExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $container->setParameter('hip_mandrill.api_key', $config['api_key']);
-        $container->setParameter('hip_mandrill.disable_delivery', $config['disable_delivery']);
-        $container->setParameter('hip_mandrill.default.sender', $config['default']['sender']);
-        $container->setParameter('hip_mandrill.default.sender_name', $config['default']['sender_name']);
-        $container->setParameter('hip_mandrill.default.subaccount', $config['default']['subaccount']);
-        $container->setParameter('hip_mandrill.proxy', $config['proxy']);
-        $container->setParameter('hip_mandrill.debug', $config['debug']);
+        $container->setParameter('slot_mandrill.api_key', $config['api_key']);
+        $container->setParameter('slot_mandrill.disable_delivery', $config['disable_delivery']);
+        $container->setParameter('slot_mandrill.default.sender', $config['default']['sender']);
+        $container->setParameter('slot_mandrill.default.sender_name', $config['default']['sender_name']);
+        $container->setParameter('slot_mandrill.default.subaccount', $config['default']['subaccount']);
+        $container->setParameter('slot_mandrill.proxy', $config['proxy']);
+        $container->setParameter('slot_mandrill.debug', $config['debug']);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

@@ -1,12 +1,12 @@
 parameters:
-    hip_mandrill.client.class: Mandrill
-    hip_mandrill.dispatcher.class: Hip\MandrillBundle\Dispatcher
+    slot_mandrill.client.class: Mandrill
+    slot_mandrill.dispatcher.class: Slot\MandrillBundle\Dispatcher
 
 services:
-    hip_mandrill.client:
-        class: "%hip_mandrill.client.class%"
-        arguments: ["%hip_mandrill.api_key%"]
+    slot_mandrill.client:
+        class: "%slot_mandrill.client.class%"
+        arguments: ["%slot_mandrill.api_key%"]
 
-    hip_mandrill.dispatcher:
-        class: "%hip_mandrill.dispatcher.class%"
-        arguments: ["@hip_mandrill.client", "%hip_mandrill.default.sender%", "%hip_mandrill.default.sender_name%", "%hip_mandrill.default.subaccount%", "%hip_mandrill.disable_delivery%", "%hip_mandrill.proxy%", "%hip_mandrill.debug%"]
+    slot_mandrill.dispatcher:
+        class: "%slot_mandrill.dispatcher.class%"
+        arguments: ["@slot_mandrill.client", "%slot_mandrill.default.sender%", "%slot_mandrill.default.sender_name%", "%slot_mandrill.default.subaccount%", "%slot_mandrill.disable_delivery%", "%slot_mandrill.proxy%", "%slot_mandrill.debug%"]

@@ -1,7 +1,7 @@
-HipMandrillBundle
+SlotMandrillBundle
 =================
 
-[![Build Status](https://api.travis-ci.org/Hipaway-Travel/HipMandrillBundle.png?branch=master)] (http://travis-ci.org/Hipaway-Travel/HipMandrillBundle)
+[![Build Status](https://api.travis-ci.org/slot/SlotMandrillBundle.png?branch=master)] (http://travis-ci.org/slot/SlotMandrillBundle)
 
 Send transactional mail through mandrill.com. This bundle provides an easy api for Symfony2 Projects.
 
@@ -31,7 +31,7 @@ Add the bundle to your composer.json
 # composer.json
 {
  "require": {
-     "hipaway-travel/mandrill-bundle": "dev-master",
+     "slot/mandrill-bundle": "dev-master",
  }
 }
 ```
@@ -51,7 +51,7 @@ Enable the bundle in the kernel
     {
         $bundles = array(
             // ...
-            new Hip\MandrillBundle\HipMandrillBundle(),
+            new Slot\MandrillBundle\SlotMandrillBundle(),
         );
     }
 
@@ -65,7 +65,7 @@ Log in to Mandrill and go to "Settings" -> "SMTP and API Credentials". Create an
 ```yaml
 # config.yml
 
-hip_mandrill:
+slot_mandrill:
     api_key: xxxxx
     disable_delivery: true # useful for dev/test environment. Default value is 'false'
     # debug: passed to \Mandrill causing it to output curl requests. Useful to see output
@@ -99,14 +99,14 @@ namespace Hip\ExampleBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
-use Hip\MandrillBundle\Message;
-use Hip\MandrillBundle\Dispatcher;
+use Slot\MandrillBundle\Message;
+use Slot\MandrillBundle\Dispatcher;
 
 class ExampleController extends Controller
 {
     public function indexAction()
     {
-        $dispatcher = $this->get('hip_mandrill.dispatcher');
+        $dispatcher = $this->get('slot_mandrill.dispatcher');
 
         $message = new Message();
 

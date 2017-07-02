@@ -1,6 +1,6 @@
 <?php
 
-use Hip\MandrillBundle\Message;
+use Slot\MandrillBundle\Message;
 
 /**
  * Message Tests

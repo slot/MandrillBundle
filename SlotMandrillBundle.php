@@ -1,6 +1,6 @@
 <?php
 
-namespace Hip\MandrillBundle;
+namespace Slot\MandrillBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -33,6 +33,6 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  * @author: Sven Loth <sven.loth@hipaway.com>
  * @copyright: 2013 Hipaway Travel GmbH, Berlin
  */
-class HipMandrillBundle extends Bundle
+class SlotMandrillBundle extends Bundle
 {
 }

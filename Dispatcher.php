@@ -1,5 +1,5 @@
 <?php
-namespace Hip\MandrillBundle;
+namespace Slot\MandrillBundle;
 
 /**
  * Mandrill Dispatcher Service
