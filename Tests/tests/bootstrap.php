@@ -2,7 +2,7 @@
 /**
  * Bootstrap file for test suite
  *
- * Copyright (c) 2013 Hipaway Travel GmbH, Berlin
+ * Copyright (c) 2017 Sven Loth <sven.loth@me.com>, Berlin
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -25,8 +25,8 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  *
- * @author: Sven Loth <sven.loth@hipaway.com>
- * @copyright: 2013 Hipaway Travel GmbH, Berlin
+ * @author: Sven Loth <sven.loth@me.com>
+ * @copyright: 2017 Sven Loth <sven.loth@me.com>, Berlin
  */
 
 if (file_exists($file = __DIR__.'/autoload.php')) {

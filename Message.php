@@ -4,7 +4,7 @@ namespace Slot\MandrillBundle;
 /**
  * A mandrill message
  *
- * Copyright (c) 2013 Hipaway Travel GmbH, Berlin
+ * Copyright (c) 2017 Sven Loth <sven.loth@me.com>, Berlin
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -28,7 +28,7 @@ namespace Slot\MandrillBundle;
  * OTHER DEALINGS IN THE SOFTWARE.
  *
  * @author: Sven Loth <sven@svenloth.de>
- * @copyright: 2013 Hipaway Travel GmbH, Berlin
+ * @copyright: 2017 Sven Loth <sven.loth@me.com>, Berlin
  */
 class Message
 {

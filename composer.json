@@ -22,8 +22,8 @@
         "mandrill/mandrill": "1.*"
     },
     "autoload": {
-        "psr-0": { "Hip\\MandrillBundle": "" }
+        "psr-0": { "Slot\\MandrillBundle": "" }
     },
-    "target-dir": "Hip/MandrillBundle",
+    "target-dir": "Slot/MandrillBundle",
     "minimum-stability": "alpha"
 }

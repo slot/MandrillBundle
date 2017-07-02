@@ -94,8 +94,8 @@ Simple controller Example:
 
 <?php
 
-// src/Hip/ExampleBundle/Controller/ExampleController.php
-namespace Hip\ExampleBundle\Controller;
+// src/Slot/ExampleBundle/Controller/ExampleController.php
+namespace Slot\ExampleBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;

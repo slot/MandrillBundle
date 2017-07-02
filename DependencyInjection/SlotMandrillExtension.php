@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\Loader;
 /**
  * This is the class that loads and manages your bundle configuration
  *
- * Copyright (c) 2013 Hipaway Travel GmbH, Berlin
+ * Copyright (c) 2017 Sven Loth <sven.loth@me.com>, Berlin
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -33,8 +33,8 @@ use Symfony\Component\DependencyInjection\Loader;
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  * OTHER DEALINGS IN THE SOFTWARE.
  *
- * @author: Sven Loth <sven.loth@hipaway.com>
- * @copyright: 2013 Hipaway Travel GmbH, Berlin
+ * @author: Sven Loth <sven.loth@me.com>
+ * @copyright: 2017 Sven Loth <sven.loth@me.com>, Berlin
  */
 class SlotMandrillExtension extends Extension
 {

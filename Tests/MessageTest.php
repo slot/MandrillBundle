@@ -5,8 +5,8 @@ use Slot\MandrillBundle\Message;
 /**
  * Message Tests
  *
- * @author   : Sven Loth <sven.loth@hipaway.com>
- * @copyright: 2013 Hipaway Travel GmbH, Berlin
+ * @author   : Sven Loth <sven.loth@me.com>
+ * @copyright: 2017 Sven Loth <sven.loth@me.com>, Berlin
  */
 class MessageTest extends \PHPUnit_Framework_TestCase
 {
