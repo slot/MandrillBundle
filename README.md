@@ -25,21 +25,10 @@ http://mandrill.com/pricing/
 Installation
 -----------
 
-Add the bundle to your composer.json
-
-```json
-# composer.json
-{
- "require": {
-     "slot/mandrill-bundle": "dev-master",
- }
-}
-```
-
-Run composer install
+via composer:
 
 ```sh
-php ./composer.phar install
+composer require slot/mandrill-bundle
 ```
 
 Enable the bundle in the kernel
