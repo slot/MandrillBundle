@@ -1,7 +1,8 @@
 language: php
 
 php:
-  - 7.0
+  - 7.4
+  - 8.0
 
 sudo: false
 
@@ -16,16 +17,18 @@ cache:
 matrix:
   fast_finish: true
   include:
-    - php: 7.0
-      env: SYMFONY_VERSION=2.8.*
-    - php: 7.0
-      env: SYMFONY_VERSION=3.0.*
-    - php: 7.0
-      env: SYMFONY_VERSION=3.1.*
-    - php: 7.0
-      env: SYMFONY_VERSION=3.2.*
-    - php: 7.0
-      env: SYMFONY_VERSION=3.3.*
+    - php: 7.4
+      env: SYMFONY_VERSION=4.4.*
+    - php: 7.4
+      env: SYMFONY_VERSION=5.1.*
+    - php: 7.4
+      env: SYMFONY_VERSION=5.2.*
+    - php: 8.0
+      env: SYMFONY_VERSION=4.4.*
+    - php: 8.0
+      env: SYMFONY_VERSION=5.1.*
+    - php: 8.0
+      env: SYMFONY_VERSION=5.2.*
 
 before_script:
   - wget -nc http://getcomposer.org/composer.phar
