@@ -1,7 +1,7 @@
 SlotMandrillBundle
 =================
 
-[![Build Status](https://travis-ci.org/slot/MandrillBundle.svg?branch=master)](http://travis-ci.org/slot/SlotMandrillBundle)
+[![Build Status](https://travis-ci.com/slot/MandrillBundle.svg?branch=master)](https://travis-ci.com/slot/MandrillBundle)
 
 Send transactional mail through mandrill.com. This bundle provides an easy api for Symfony2 Projects.
 
