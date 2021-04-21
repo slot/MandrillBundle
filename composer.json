@@ -19,7 +19,7 @@
     "require": {
         "symfony/http-foundation": ">=2.8",
         "symfony/config": ">=2.8",
-        "mandrill/mandrill": "1.*"
+        "mailchimp/transactional": "1.*"
     },
     "require-dev": {
         "symfony/phpunit-bridge": ">=2.8",
