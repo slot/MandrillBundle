@@ -20,7 +20,6 @@ jobs:
       uses: jitsecurity-controls/jit-github-action@v4.0.1
       with:
         security_control: registry.jit.io/control-enrichment-slim:latest
-        runner_setup: ${{toJSON(fromJSON(github.event.inputs.client_payload).context.job.runner.setup)}}
         
   secret-detection:
     if: fromJSON(github.event.inputs.client_payload).payload.workflow_job_name == 'secret-detection' && fromJSON(github.event.inputs.client_payload).payload.workflow_slug == 'workflow-secret-detection'
@@ -32,5 +31,4 @@ jobs:
       with:
         security_control: registry.jit.io/control-gitleaks-alpine:latest
         security_control_output_file: /tmp/report.json
-        runner_setup: ${{toJSON(fromJSON(github.event.inputs.client_payload).context.job.runner.setup)}}
         
