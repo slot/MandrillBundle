@@ -18,7 +18,7 @@ jobs:
     timeout-minutes: 20
     steps:
     - name: enrichment
-      uses: jitsecurity-controls/jit-github-action@v4.0.1
+      uses: jitsecurity-controls/jit-github-action@v4.0.3
       with:
         security_control: registry.jit.io/control-enrichment-slim:latest
         
@@ -28,7 +28,7 @@ jobs:
     timeout-minutes: 20
     steps:
     - name: gitleaks
-      uses: jitsecurity-controls/jit-github-action@v4.0.1
+      uses: jitsecurity-controls/jit-github-action@v4.0.3
       with:
         security_control: registry.jit.io/control-gitleaks-alpine:latest
         security_control_output_file: /tmp/report.json
